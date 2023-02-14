@@ -1,5 +1,11 @@
 import React from "react";
-import { BoxUpload, Editor, Tabs } from "../../components";
+import {
+  AddressBook,
+  BoxUpload,
+  Editor,
+  Selects,
+  Tabs,
+} from "../../components";
 import { FcCancel, FcCheckmark } from "react-icons/fc";
 
 const Memorandum = () => {
@@ -241,7 +247,72 @@ const Memorandum = () => {
             </div>
           </div>
           <div label="Attribute" icons={<FcCheckmark />}>
-            Nothing to see here, this tab is <em>extinct</em>!
+            <div className="mb-6">
+              <div className="h-14 p-4 bg-zinc-300/50 rounded">
+                Letter Attribute Details
+              </div>
+              <div className="p-4">
+                <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
+                  <div>Mail Code</div>
+                  <div>
+                    <Selects />
+                  </div>
+                </div>
+                <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
+                  <div>Characteristic</div>
+                  <div>
+                    <Selects />
+                  </div>
+                </div>
+                <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
+                  <div>Year</div>
+                  <div>
+                    <Selects />
+                  </div>
+                </div>
+                <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
+                  <div>Number Letter</div>
+                  <div>
+                    <Selects />
+                  </div>
+                </div>
+                <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
+                  <div>Date Create</div>
+                  <div>
+                    <Selects />
+                  </div>
+                </div>
+              </div>
+              <div className="h-14 p-4 bg-zinc-300/50 rounded">
+                Letter Signatory Data
+              </div>
+              <div className="p-4">
+                <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
+                  <div>Units Code</div>
+                  <div>
+                    <Selects />
+                  </div>
+                </div>
+                <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
+                  <div>Name Office</div>
+                  <div>
+                    <Selects />
+                  </div>
+                </div>
+                <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
+                  <div>Deputy</div>
+                  <div>
+                    <Selects />
+                  </div>
+                </div>
+                <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
+                  <div>SubDeputy</div>
+                  <div>
+                    <AddressBook />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </Tabs>
         <button

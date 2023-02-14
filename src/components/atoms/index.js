@@ -5,6 +5,7 @@ import Tabs from "./Tabs";
 import Editor from "./Editor";
 import Dropdownmenu from "./DropdownMenu";
 import BoxUpload from "./BoxUpload";
+import Modals from "./Modal";
 
 export {
   ButtonSave,
@@ -14,4 +15,5 @@ export {
   Editor,
   Dropdownmenu,
   BoxUpload,
+  Modals,
 };
