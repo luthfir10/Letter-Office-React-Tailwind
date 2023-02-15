@@ -29,24 +29,26 @@ class Tabs extends Component {
     return (
       <div className="flex flex-wrap">
         <div className="w-full">
-          <ul className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-            {children.map((child) => {
-              const { label } = child.props;
-              const { icons } = child.props;
+          <div className="border-b border-gray-200 dark:border-gray-700">
+            <ul className="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+              {children.map((child) => {
+                const { label } = child.props;
+                const { icons } = child.props;
 
-              return (
-                <Tab
-                  activeTab={activeTab}
-                  key={label}
-                  label={label}
-                  icons={icons}
-                  onClick={onClickTabItem}
-                />
-              );
-            })}
-          </ul>
+                return (
+                  <Tab
+                    activeTab={activeTab}
+                    key={label}
+                    label={label}
+                    icons={icons}
+                    onClick={onClickTabItem}
+                  />
+                );
+              })}
+            </ul>
+          </div>
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <div className="px-14 py-10 flex-auto border-b-2 border-gray-800/50">
+            <div className=" px-4 lg:px-14 py-6 lg:py-10 flex-auto border-b-2 border-gray-800/50">
               {children.map((child) => {
                 if (child.props.label !== activeTab) return undefined;
                 return child.props.children;

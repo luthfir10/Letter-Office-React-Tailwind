@@ -9,7 +9,7 @@ const Sidebar = ({ isExpended, setExpendedState }) => {
     <>
       <aside
         id="sidebar-menu"
-        className={`fixed z-50 top-0 left-0 sm:w-64 md:w-2/6 lg:w-[277px] bg-cover bg-neutral-600 bg-blend-multiply  h-screen pt-0 transition-transform -translate-x-full  shadow-xl shadow-gray-800 lg:translate-x-0
+        className={`fixed z-50 top-0 left-0 w-64 md:w-72 lg:w-[277px] bg-cover bg-neutral-600 bg-blend-multiply  h-screen pt-0 transition-transform -translate-x-full  shadow-xl shadow-gray-800 lg:translate-x-0
         ${
           isExpended
             ? ""

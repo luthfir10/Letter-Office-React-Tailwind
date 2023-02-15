@@ -14,7 +14,7 @@ const Dropdownmenu = ({ icon, title, children }) => {
         <div className="w-10 text-2xl pt-0 pr-2">{icon}</div>
         <span className="text-sm">{title}</span>
         <span
-          className={`text-lg ml-[50%] lg:ml-[55%] md::ml-[55%] ${
+          className={`text-lg ml-[50%] lg:ml-[55%] md:ml-[55%] ${
             dropdownMenu ? "rotate-90 duration-300 pt-2" : "duration-300"
           }`}
           id="arrow"

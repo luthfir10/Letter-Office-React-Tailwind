@@ -1,5 +1,6 @@
 import ButtonSave from "./ButtonSave";
 import InputText from "./InputText";
+import TextAreaList from "./TextAreaList";
 import Selects from "./Selects";
 import Tabs from "./Tabs";
 import Editor from "./Editor";
@@ -16,4 +17,5 @@ export {
   Dropdownmenu,
   BoxUpload,
   Modals,
+  TextAreaList,
 };
