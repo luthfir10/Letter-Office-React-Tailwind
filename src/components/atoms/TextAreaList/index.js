@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { TiDeleteOutline } from "react-icons/ti";
+import { IoPersonAddSharp } from "react-icons/io5";
 
 const TextAreaList = ({ arrays, setArrays, ...rest }) => {
   const [toAddaddress, setToAddaddress] = useState("");
@@ -31,10 +32,10 @@ const TextAreaList = ({ arrays, setArrays, ...rest }) => {
           {...rest}
         />
         <button
-          className="flex-shrink-0 z-10 inline-flex py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-r-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 "
+          className="flex-shrink-0 z-10 inline-flex py-5 px-4 text-base font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-r-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 "
           onClick={addArrayAddres}
         >
-          +
+          <IoPersonAddSharp />
         </button>
       </div>
       {arrays && (
@@ -44,7 +45,7 @@ const TextAreaList = ({ arrays, setArrays, ...rest }) => {
               {array.address}
 
               <button
-                className="text-xl inline fixed ml-2 text-red-600 justify-center hover:text-red-900 hover:border-red-900"
+                className="text-xl inline  ml-2 text-red-600 justify-center hover:text-red-900 hover:border-red-900"
                 onClick={() => deleteAddress(array)}
               >
                 <TiDeleteOutline />

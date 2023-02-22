@@ -7,11 +7,11 @@ const AddressBook = () => {
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="w-full h-11 p-2 text-left bg-gray-50 border-gray-300 text-gray-500 border rounded-lg hover:border-sky-500"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Open regular modal
+        Select Functionary
       </button>
       <Modals showModal={showModal} setShowModal={setShowModal} />
     </>

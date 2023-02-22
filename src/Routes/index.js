@@ -5,6 +5,7 @@ import Notfound from "../pages/404";
 import UserRoute from "./UserRoute";
 
 const LazyPageLogin = React.lazy(() => import("../pages/Login"));
+const LazyPageRegister = React.lazy(() => import("../pages/Register"));
 
 const Routers = () => {
   return (
@@ -14,6 +15,14 @@ const Routers = () => {
         element={
           <React.Suspense fallback={<LoadingLazy />}>
             <LazyPageLogin />
+          </React.Suspense>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <React.Suspense fallback={<LoadingLazy />}>
+            <LazyPageRegister />
           </React.Suspense>
         }
       />

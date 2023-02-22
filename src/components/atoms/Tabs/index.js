@@ -48,7 +48,7 @@ class Tabs extends Component {
             </ul>
           </div>
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-            <div className=" px-4 lg:px-14 py-6 lg:py-10 flex-auto border-b-2 border-gray-800/50">
+            <div className=" px-5 lg:px-14 py-6 lg:py-10 flex-auto border-b-2 border-gray-800/50">
               {children.map((child) => {
                 if (child.props.label !== activeTab) return undefined;
                 return child.props.children;

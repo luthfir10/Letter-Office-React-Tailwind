@@ -7,7 +7,7 @@ import {
   Tabs,
   TextAreaList,
 } from "../../components";
-import { FcCancel, FcCheckmark } from "react-icons/fc";
+import { IoCheckmarkCircleSharp, IoCloseCircle } from "react-icons/io5";
 
 const Memorandum = () => {
   const [AddressEkternal, setAddressEkternal] = useState([]);
@@ -20,7 +20,10 @@ const Memorandum = () => {
     <div className="p-2 bg-white rounded-lg dark:border-gray-700 mt-14">
       {/* <form noValidate> */}
       <Tabs>
-        <div label="Information Letter" icons={<FcCancel />}>
+        <div
+          label="Information Letter"
+          icons={<IoCheckmarkCircleSharp className="text-green-600" />}
+        >
           <div className="grid gap-4 mb-6 lg:grid-cols-3">
             <div>
               <label
@@ -50,11 +53,7 @@ const Memorandum = () => {
               </label>
             </div>
             <div className="col-span-2">
-              <TextAreaList
-                id="to_internal"
-                placeholder="type the recipient of the letter, then click the (+) icon beside to add the recipient"
-                required
-              />
+              <AddressBook />
             </div>
           </div>
           <div className="grid gap-4 mb-6 lg:grid-cols-3">
@@ -114,13 +113,10 @@ const Memorandum = () => {
                 <textarea
                   type="text"
                   id="desti_City"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-l-lg border-l-gray-100 border-l-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full p-2.5 focus:ring-1"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg border-l-gray-100 border-l-2 focus:outline-none focus:border-sky-500 focus:ring-sky-500 block w-full p-2.5 focus:ring-1"
                   placeholder="destination city"
                   required
                 />
-                <button className="flex-shrink-0 z-10 inline-flex py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-r-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 ">
-                  +
-                </button>
               </div>
             </div>
           </div>
@@ -218,7 +214,7 @@ const Memorandum = () => {
             </div>
           </div>
         </div>
-        <div label="Content" icons={<FcCancel />}>
+        <div label="Content" icons={<IoCloseCircle className="text-red-600" />}>
           <div className="mb-6">
             <label className="before:content-['*'] before:ml-0.5 before:text-red-500 block mb-2 text-sm font-medium text-gray-900 dark:text-white">
               Letter Content
@@ -236,7 +232,10 @@ const Memorandum = () => {
             </div>
           </div>
         </div>
-        <div label="Attribute" icons={<FcCheckmark />}>
+        <div
+          label="Attribute"
+          icons={<IoCloseCircle className="text-red-600" />}
+        >
           <div className="mb-6">
             <div className="h-14 p-4 bg-zinc-300/50 rounded">
               Letter Attribute Details
@@ -298,7 +297,7 @@ const Memorandum = () => {
               <div className="grid gap-4 mb-6 grid-cols-2 border-b-2 border-gray-400/50">
                 <div>SubDeputy</div>
                 <div>
-                  <AddressBook />
+                  <Selects />
                 </div>
               </div>
             </div>
