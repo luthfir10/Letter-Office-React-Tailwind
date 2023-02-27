@@ -1,22 +1,45 @@
 import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "../../configs/api/axios";
 import { useFormik } from "formik";
+
 import logocp from "../../assets/img/logo_instansi.png";
 import { registerSchema } from "../../schemas";
+import { Alerts } from "../../components/atoms";
 
-import axios from "../../services/api/axios";
 const Register_URL = "/users";
 
-const onSubmit = async (values, actions) => {
-  try {
-    await axios.post(Register_URL, JSON.stringify({ values }));
-  } catch (error) {}
-  console.log(values);
-  console.log(actions);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
-};
-
 const Register = () => {
+  const [msg, setMsg] = useState("");
+  const navigate = useNavigate();
+  const [alertShow, setAlertShow] = useState(false);
+
+  const onSubmit = async (values, actions) => {
+    try {
+      await axios.post(Register_URL, {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+        confPassword: values.confPassword,
+        role: values.role,
+      });
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      actions.resetForm();
+      navigate("/");
+    } catch (error) {
+      allertPop(error.response.data.msg);
+    }
+  };
+
+  const allertPop = (e) => {
+    setMsg(e);
+    setAlertShow(true);
+    setTimeout(() => {
+      setAlertShow(false);
+    }, 3500);
+  };
+
   const {
     values,
     errors,
@@ -31,7 +54,7 @@ const Register = () => {
       email: "",
       password: "",
       confPassword: "",
-      role: "user1",
+      role: "user",
     },
     validationSchema: registerSchema,
     onSubmit,
@@ -47,6 +70,7 @@ const Register = () => {
       <div className="justify-center flex mb-5 text-slate-500 text-xl">
         Form Register
       </div>
+      {alertShow && <Alerts msg={msg} />}
       <div className="lg:container">
         <form onSubmit={handleSubmit} autoComplete="off">
           <div className="relative z-0 w-full mb-6 group">

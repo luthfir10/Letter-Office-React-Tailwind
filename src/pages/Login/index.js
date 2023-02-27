@@ -1,17 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useFormik } from "formik";
-import logocp from "../../assets/img/logo_instansi.png";
-import { loginSchema } from "../../schemas";
-import { Link } from "react-router-dom";
 
-const onSubmit = async (values, actions) => {
-  console.log(values);
-  console.log(actions);
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  actions.resetForm();
-};
+import logocp from "../../assets/img/logo_instansi.png";
+import { Alerts } from "../../components/atoms";
+import { loginSchema } from "../../schemas";
+import useAuth from "../../services/hooks/useAuth";
+import axios from "../../configs/api/axios";
+
+const Login_URL = "/login";
 
 const Login = () => {
+  const { setAuth } = useAuth();
+  const [msg, setMsg] = useState("");
+  const [alertShow, setAlertShow] = useState(false);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/spde";
+
+  const onSubmit = async (values, actions) => {
+    try {
+      const response = await axios.post(Login_URL, {
+        email: values.email,
+        password: values.password,
+      });
+      // console.log(JSON.stringify(response?.data));
+      const accessToken = response?.data?.accessToken;
+      const roles = [response?.data?.role];
+      const user = response.data.username;
+      setAuth({ user, roles, accessToken });
+      // console.log(from);
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      actions.resetForm();
+      navigate(from, { replace: true });
+    } catch (error) {
+      if (!error.response) {
+        allertPop("Server No Response");
+      } else {
+        allertPop(error.response.data.msg);
+      }
+    }
+  };
+
   const {
     values,
     errors,
@@ -29,6 +60,14 @@ const Login = () => {
     onSubmit,
   });
 
+  const allertPop = (e) => {
+    setMsg(e);
+    setAlertShow(true);
+    setTimeout(() => {
+      setAlertShow(false);
+    }, 3500);
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-10">
@@ -41,8 +80,9 @@ const Login = () => {
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
-              Sign in to your account {process.env.REACT_APP_BASE_URL}
+              Sign in to your account
             </h1>
+            {alertShow && <Alerts msg={msg} />}
             <form
               className="space-y-4 md:space-y-6"
               onSubmit={handleSubmit}
@@ -77,6 +117,7 @@ const Login = () => {
               <div className="relative z-0 w-full mb-6 group">
                 <input
                   type="password"
+                  autoComplete="off"
                   value={values.password}
                   onChange={handleChange}
                   onBlur={handleBlur}

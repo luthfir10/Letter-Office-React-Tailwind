@@ -2,7 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import bgeoffice from "../../../assets/img/bg-eoffice.jpg";
 import logocp from "../../../assets/img/logo_instansi.png";
-import { MdOutlineDashboard, MdMailOutline } from "react-icons/md";
+import {
+  MdOutlineDashboard,
+  MdMailOutline,
+  MdPeopleOutline,
+} from "react-icons/md";
 import { Dropdownmenu } from "../../atoms";
 const Sidebar = ({ isExpended, setExpendedState }) => {
   return (
@@ -67,6 +71,15 @@ const Sidebar = ({ isExpended, setExpendedState }) => {
               </Link>
             </Dropdownmenu>
 
+            <Link
+              to="masteruser"
+              className="flex p-2 h-11 w-full no-underline uppercase mx-auto mt-1 rounded-md relative hover:bg-opacity-20 hover:bg-white hover:transition-colors hover:duration-300 hover:cursor-pointer"
+            >
+              <div className="w-10 text-2xl pt-0 pr-2">
+                <MdPeopleOutline />
+              </div>
+              <span className="text-sm">Master User</span>
+            </Link>
             <Link
               to="/home"
               className="flex p-2 h-11 w-full no-underline uppercase mx-auto mt-1 rounded-md relative hover:bg-opacity-20 hover:bg-white hover:transition-colors hover:duration-300 hover:cursor-pointer"

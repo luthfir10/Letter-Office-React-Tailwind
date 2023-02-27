@@ -1,7 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import axios from "../../../configs/api/axios";
 
 const Navbar = ({ isExpended, setExpendedState }) => {
+  const navigate = useNavigate();
+  const Logout = async () => {
+    try {
+      await axios.delete("/logout");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <nav className=" top-0 w-full items-center rounded-lg border-b  dark:bg-gray-800 dark:border-gray-700">
       <div className="container">
@@ -22,12 +32,12 @@ const Navbar = ({ isExpended, setExpendedState }) => {
             </button>
           </div>
           <div className="px-4">
-            <Link
-              to="/logout"
+            <button
+              onClick={Logout}
               className="right-0 font-bold text-lg text-blue-300 block py-2"
             >
-              Logout Icon
-            </Link>
+              Logout
+            </button>
           </div>
         </div>
       </div>

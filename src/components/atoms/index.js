@@ -7,6 +7,7 @@ import Editor from "./Editor";
 import Dropdownmenu from "./DropdownMenu";
 import BoxUpload from "./BoxUpload";
 import Modals from "./Modal";
+import Alerts from "./Alerts";
 
 export {
   ButtonSave,
@@ -18,4 +19,5 @@ export {
   BoxUpload,
   Modals,
   TextAreaList,
+  Alerts,
 };
