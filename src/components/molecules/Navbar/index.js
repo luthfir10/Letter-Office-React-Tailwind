@@ -1,16 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../../../configs/api/axios";
+import useLogout from "../../../services/hooks/useLogout";
 
 const Navbar = ({ isExpended, setExpendedState }) => {
   const navigate = useNavigate();
-  const Logout = async () => {
-    try {
-      await axios.delete("/logout");
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-    }
+  const logout = useLogout();
+
+  const signOut = async () => {
+    await logout();
+    navigate("/");
   };
   return (
     <nav className=" top-0 w-full items-center rounded-lg border-b  dark:bg-gray-800 dark:border-gray-700">
@@ -33,7 +31,7 @@ const Navbar = ({ isExpended, setExpendedState }) => {
           </div>
           <div className="px-4">
             <button
-              onClick={Logout}
+              onClick={signOut}
               className="right-0 font-bold text-lg text-blue-300 block py-2"
             >
               Logout

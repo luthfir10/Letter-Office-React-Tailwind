@@ -4,7 +4,10 @@ import { LoadingLazy } from "../components";
 import Home from "../pages/Home";
 import Memorandum from "../pages/Memorandum";
 import Externals from "../pages/Externals";
+
 import MasterUser from "../pages/MasterUser";
+import EditUser from "../pages/MasterUser/EditUser";
+
 import Notfound from "../pages/404";
 
 const LazyLayoutUser = React.lazy(() => import("../layout/UserLayout"));
@@ -26,7 +29,10 @@ const UserRoute = () => {
             <Route path="external" element={<Externals />} />
             <Route path="*" element={<Notfound />} />
           </Route>
-          <Route path="masteruser" element={<MasterUser />} />
+          <Route path="masteruser">
+            <Route index element={<MasterUser />} />
+            <Route path="edit/:uuid" element={<EditUser />} />
+          </Route>
           <Route path="*" element={<Notfound />} />
         </Route>
       </Routes>

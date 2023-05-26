@@ -25,12 +25,11 @@ const Login = () => {
         email: values.email,
         password: values.password,
       });
-      // console.log(JSON.stringify(response?.data));
       const accessToken = response?.data?.accessToken;
       const roles = [response?.data?.role];
       const user = response.data.username;
-      setAuth({ user, roles, accessToken });
-      // console.log(from);
+      const name = response.data.name;
+      setAuth({ user, name, roles, accessToken });
       await new Promise((resolve) => setTimeout(resolve, 1000));
       actions.resetForm();
       navigate(from, { replace: true });

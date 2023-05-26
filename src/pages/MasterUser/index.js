@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import useAxiosPrivate from "../../services/hooks/useAxiosPrivate";
 
 import LogoUser from "../../assets/img/user-avatar-png.png";
@@ -33,9 +34,12 @@ const MasterUser = () => {
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div className="flex items-center justify-between pb-4 bg-white dark:bg-gray-900">
           <div>
-            <button className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700">
-              Action
-            </button>
+            <Link
+              to="edit"
+              className="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+            >
+              Add New
+            </Link>
           </div>
           <label htmlFor="table-search" className="sr-only">
             Search
@@ -59,7 +63,7 @@ const MasterUser = () => {
             <input
               type="text"
               id="table-search-users"
-              className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              className="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-48 lg:w-80 md:w-64 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 focus:outline-none "
               placeholder="Search for users"
             />
           </div>
@@ -76,7 +80,7 @@ const MasterUser = () => {
               <th scope="col" className="px-6 py-3">
                 Status
               </th>
-              <th scope="col" className="px-6 py-3">
+              <th scope="col" colSpan="2" className="px-6 py-3 text-center">
                 Action
               </th>
             </tr>
@@ -93,7 +97,7 @@ const MasterUser = () => {
                     className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                   >
                     <img
-                      className="w-10 h-10 rounded-full"
+                      className="w-7 h-7 lg:w-10 lg:h-10 rounded-full"
                       src={LogoUser}
                       alt="User Profile"
                     />
@@ -120,13 +124,21 @@ const MasterUser = () => {
                       </div>
                     )}
                   </td>
-                  <td className="px-6 py-4">
-                    <a
-                      href="?#"
+                  <td className="px-6 py-4 text-center">
+                    <Link
+                      to={`edit/${users.uuid}`}
                       className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                     >
                       Edit user
-                    </a>
+                    </Link>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <Link
+                      to={`edit/${users.uuid}`}
+                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                    >
+                      Kick user
+                    </Link>
                   </td>
                 </tr>
               ))
